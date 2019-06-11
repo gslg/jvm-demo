@@ -9,22 +9,24 @@ package com.lg.demo.classloader;
 public class ArrayClassLoaderTest {
     public static void main(String[] args) {
         int[] a = new int[]{1,2,3,4,5};
-        System.out.println(a.getClass().getClassLoader());
+        System.out.println("class loader: " + a.getClass().getClassLoader());
         System.out.println(a.getClass());
 
 
         String[] b = new String[]{"hello","word"};
-        System.out.println(b.getClass().getClassLoader());
+        //null,因为String.class是由根加载器(BootStrapLoader)加载的,由根加载器加载的class对象，
+        // 在获取classloader时可能返回null,这个由具体的实现不同可能返回null代表根加载器
+        System.out.println("class loader: " + b.getClass().getClassLoader());
         System.out.println(b.getClass());
 
         Integer[] c = new Integer[]{1,2,3,4,5};
-        System.out.println(c.getClass().getClassLoader());
+        System.out.println("class loader: " + c.getClass().getClassLoader());
         System.out.println(c.getClass());
 
         Hello[] hellos = new Hello[1];
         System.out.println(hellos.getClass());
         System.out.println(hellos.getClass().getSuperclass());
-        System.out.println(hellos.getClass().getClassLoader());
+        System.out.println("class loader: " + hellos.getClass().getClassLoader());
 
     }
 }

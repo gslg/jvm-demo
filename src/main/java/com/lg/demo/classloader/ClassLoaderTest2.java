@@ -1,5 +1,7 @@
 package com.lg.demo.classloader;
 
+import java.util.Objects;
+
 /**
  * 类加载器
  *
@@ -19,6 +21,10 @@ public class ClassLoaderTest2 {
         System.out.println(test2 == test3);
 
         System.out.println(String.class.getClassLoader());
+
+        ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+
+        System.out.println(Objects.equals(systemClassLoader,loader));//true
 
 
     }
